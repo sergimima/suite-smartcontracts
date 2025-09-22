@@ -2,7 +2,7 @@
 
 ## 📋 Overview
 
-**RSKQuest** is an NFT smart contract (ERC721) deployed on **RSK Testnet** that allows users to mint certificate NFTs upon completing campaigns and activities on the RSK Quest platform.
+**RSKQuest** is an NFT smart contract (ERC721) deployed on **RSK Testnet** that allows users to mint certificate NFTs upon completing campaigns and activities on the RSK Quest Hub platform.
 
 ### 🎯 Purpose
 - **Campaign Certificates**: NFTs minted when completing an entire campaign
@@ -94,7 +94,6 @@ mapping(string => mapping(string => uint256)) public activitySupply;
 ### ID Structure
 - **Campaign ID**: Unique campaign identifier
 - **Activity ID**: Specific activity identifier (optional)
-- **URL Example**: `https://vquests.xyz/en/campaigns/cmfcjktb50001pdrgggkj11se/activities/cmfcki0qx000hpdbzhuna67w7`
 
 ### Metadata
 - **Processing**: Backend combines fixed and dynamic metadata
@@ -156,7 +155,7 @@ const tx = await contract.mintCertificate(
 
 ### For Users
 1. Connect wallet (MetaMask with RSK Testnet)
-2. Complete campaign/activity on Vquests
+2. Complete campaign/activity on RSK Quest Hub
 3. Click "Claim NFT"
 4. Confirm transaction and pay
 5. Receive NFT in wallet
@@ -179,13 +178,13 @@ const tx = await contract.mintCertificate(
 ## 🚀 Next Steps
 
 1. **Testing**: Test minting on RSK Testnet
-2. **Integration**: Connect with Vquests backend
+2. **Integration**: Connect with RSK Quest Hub backend
 3. **Frontend**: Implement user interface
 4. **Mainnet**: Deploy on RSK Mainnet when ready
 
 ---
 
-**Developed by**: RSK Quest Team  
+**Developed by**: RSK Quest Hub Team  
 **Deploy Date**: January 2025  
 **Network**: RSK Testnet  
 **Version**: 1.0.0  
