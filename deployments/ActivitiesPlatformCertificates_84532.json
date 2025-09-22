@@ -1,0 +1,27 @@
+{
+  "contractName": "ActivitiesPlatformCertificates",
+  "contractAddress": "0xABb49774FFF2086fcCA53b26008a669a8620e14E",
+  "owner": "0x090378a9c80c5E1Ced85e56B2128c1e514E75357",
+  "chainId": 84532,
+  "network": "Base Sepolia",
+  "gasUsed": 1550770,
+  "gasCost": "0.00000155085994466 ETH",
+  "deploymentDate": "2025-01-05T13:26:00Z",
+  "explorerUrl": "https://sepolia.basescan.org/address/0xABb49774FFF2086fcCA53b26008a669a8620e14E",
+  "deploymentMethod": "forge script (direct command)",
+  "verified": true,
+  "contractDetails": {
+    "name": "Activities Platform Certificates",
+    "symbol": "APC",
+    "standard": "ERC721",
+    "features": [
+      "NFT certificates for campaigns",
+      "One certificate per user per campaign",
+      "Campaign-based organization",
+      "Owner-controlled minting",
+      "Transfer support",
+      "OpenZeppelin v5 compatible"
+    ]
+  },
+  "status": "SUCCESSFULLY_DEPLOYED"
+}

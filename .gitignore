@@ -1,0 +1,53 @@
+# ===== SECURITY - NEVER COMMIT THESE =====
+.env
+.env.local
+.env.production
+.env.staging
+*.key
+*.pem
+keystore/
+wallets/
+secrets/
+
+# ===== FOUNDRY =====
+cache/
+out/
+broadcast/
+!broadcast/*/dry-run/
+
+# ===== NODE.JS =====
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ===== LOGS =====
+*.log
+logs/
+
+# ===== TEMPORARY FILES =====
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# ===== IDE =====
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ===== DEPLOYMENT ARTIFACTS (OPTIONAL) =====
+# Uncomment if you don't want to track deployment artifacts
+# deployments/
+# broadcast/
+
+# ===== TESTING =====
+coverage/
+.coverage
+lcov.info
+
+# ===== MISC =====
+*.tgz
+*.tar.gz
