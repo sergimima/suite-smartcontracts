@@ -5,6 +5,7 @@ libs = ["lib"]
 script = "script"
 cache_path = "cache"
 artifacts = "out"
+fs_permissions = [{ access = "read-write", path = "./deployments" }]
 
 remappings = [
     "@openzeppelin/=lib/openzeppelin-contracts/",
@@ -21,6 +22,8 @@ via_ir = true
 eth = "${ETH_RPC_URL}"
 sepolia = "${SEPOLIA_RPC_URL}"
 base_sepolia = "${BASE_SEPOLIA_RPC_URL}"
+story_testnet = "${STORY_RPC_URL}"
+story_aeneid = "https://aeneid.storyrpc.io"
 mumbai = "${MUMBAI_RPC_URL}"
 polygon = "${POLYGON_RPC_URL}"
 arbitrum = "${ARBITRUM_RPC_URL}"

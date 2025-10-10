@@ -1,0 +1,179 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
+
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/utils/Pausable.sol";
+import "./KukuxumusuNFT.sol";
+
+/**
+ * @title KukuxumusuNFTFactory
+ * @dev Factory contract for creating multiple Kukuxumusu NFT collections
+ * @notice Creates and manages multiple NFT collections with configurable parameters
+ */
+contract KukuxumusuNFTFactory is Ownable, ReentrancyGuard, Pausable {
+    
+    /// @dev Collection configuration structure
+    struct CollectionConfig {
+        string name;
+        string symbol;
+        string baseURI;
+        uint256 maxSupply;
+        address owner;
+        address royaltyReceiver;
+        uint96 royaltyFee;
+    }
+
+    /// @dev Collection information structure
+    struct CollectionInfo {
+        address contractAddress;
+        string name;
+        string symbol;
+        uint256 maxSupply;
+        address owner;
+        uint256 createdAt;
+    }
+
+    /// @notice Mapping of collection ID to collection info
+    mapping(uint256 => CollectionInfo) public collections;
+
+    /// @notice Mapping of collection name to collection ID (for uniqueness)
+    mapping(string => bool) public collectionNames;
+
+    /// @notice Counter for collection IDs
+    uint256 public collectionCounter;
+
+    /// @notice Mapping of collection address to collection ID
+    mapping(address => uint256) public collectionIds;
+
+    // Events
+    event CollectionCreated(
+        uint256 indexed collectionId,
+        address indexed contractAddress,
+        string name,
+        string symbol,
+        address owner
+    );
+
+    event CollectionUpdated(
+        uint256 indexed collectionId,
+        address indexed contractAddress
+    );
+
+    /**
+     * @dev Constructor to initialize the factory
+     * @param initialOwner Address of the initial owner
+     */
+    constructor(address initialOwner) Ownable(initialOwner) {
+        // Factory initialized
+    }
+
+    /**
+     * @notice Create a new NFT collection
+     * @param config Collection configuration parameters
+     * @return collectionId The ID of the created collection
+     * @return contractAddress The address of the deployed NFT contract
+     */
+    function createCollection(CollectionConfig memory config) 
+        external 
+        onlyOwner 
+        nonReentrant 
+        whenNotPaused 
+        returns (uint256 collectionId, address contractAddress) 
+    {
+        require(bytes(config.name).length > 0, "Collection name cannot be empty");
+        require(bytes(config.symbol).length > 0, "Collection symbol cannot be empty");
+        require(config.maxSupply > 0, "Max supply must be greater than 0");
+        require(config.owner != address(0), "Invalid owner address");
+        require(!collectionNames[config.name], "Collection name already exists");
+
+        // Generate unique collection ID
+        collectionId = collectionCounter++;
+        
+        // Deploy new NFT contract
+        KukuxumusuNFT newNFT = new KukuxumusuNFT(
+            config.name,
+            config.symbol,
+            config.baseURI,
+            config.maxSupply,
+            config.owner
+        );
+
+        contractAddress = address(newNFT);
+
+        // Set royalty if specified
+        if (config.royaltyReceiver != address(0) && config.royaltyFee > 0) {
+            newNFT.setDefaultRoyalty(config.royaltyReceiver, config.royaltyFee);
+        }
+
+        // Store collection info
+        collections[collectionId] = CollectionInfo({
+            contractAddress: contractAddress,
+            name: config.name,
+            symbol: config.symbol,
+            maxSupply: config.maxSupply,
+            owner: config.owner,
+            createdAt: block.timestamp
+        });
+
+        // Mark collection name as used
+        collectionNames[config.name] = true;
+        
+        // Map contract address to collection ID
+        collectionIds[contractAddress] = collectionId;
+
+        emit CollectionCreated(collectionId, contractAddress, config.name, config.symbol, config.owner);
+    }
+
+    /**
+     * @notice Get collection information by ID
+     * @param collectionId The collection ID
+     * @return Collection information
+     */
+    function getCollection(uint256 collectionId) external view returns (CollectionInfo memory) {
+        require(collectionId < collectionCounter, "Collection does not exist");
+        return collections[collectionId];
+    }
+
+    /**
+     * @notice Get collection information by contract address
+     * @param contractAddress The NFT contract address
+     * @return Collection information
+     */
+    function getCollectionByAddress(address contractAddress) external view returns (CollectionInfo memory) {
+        uint256 collectionId = collectionIds[contractAddress];
+        require(collectionId > 0 || (collectionId == 0 && collections[0].contractAddress == contractAddress), "Collection not found");
+        return collections[collectionId];
+    }
+
+    /**
+     * @notice Get total number of collections created
+     * @return Total number of collections
+     */
+    function getTotalCollections() external view returns (uint256) {
+        return collectionCounter;
+    }
+
+    /**
+     * @notice Check if a collection name is available
+     * @param name The collection name to check
+     * @return True if the name is available
+     */
+    function isCollectionNameAvailable(string memory name) external view returns (bool) {
+        return !collectionNames[name];
+    }
+
+    /**
+     * @notice Pause the factory
+     */
+    function pause() external onlyOwner {
+        _pause();
+    }
+
+    /**
+     * @notice Unpause the factory
+     */
+    function unpause() external onlyOwner {
+        _unpause();
+    }
+}

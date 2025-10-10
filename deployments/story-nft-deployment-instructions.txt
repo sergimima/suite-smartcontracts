@@ -1,0 +1,12 @@
+# Story Aeneid NFT Deployment
+
+Wallet: 0x0e60B83F83c5d2684acE779dea8A957e91D02475
+Required funds: ~0.03 ETH on Story Aeneid testnet (Chain ID: 1315)
+
+Get testnet tokens from:
+- https://faucet.story.foundation/
+- https://cloud.google.com/application/web3/faucet/story
+
+Once you have funds, run:
+export ETHERSCAN_API_KEY="dummy" && forge script script/DeployKukuxumusuNFT.s.sol:DeployKukuxumusuNFT --rpc-url https://aeneid.storyrpc.io --broadcast --legacy
+

@@ -4,7 +4,7 @@ pragma solidity ^0.8.13;
 import {Test, console} from "@forge-std/Test.sol";
 import {RSKQuest} from "../src/RSKQuest.sol";
 
-contract ActivitiesPlatformCertificatesTest is Test {
+contract RSKQuestTest is Test {
     RSKQuest public certificatesContract;
     
     address public owner;
@@ -19,7 +19,7 @@ contract ActivitiesPlatformCertificatesTest is Test {
         // Deploy the contract
         certificatesContract = new RSKQuest(owner);
         
-        console.log("ActivitiesPlatformCertificates deployed at:", address(certificatesContract));
+        console.log("RSKQuest deployed at:", address(certificatesContract));
     }
     
     function test_ContractDeployment() public {
@@ -109,3 +109,4 @@ contract ActivitiesPlatformCertificatesTest is Test {
         // Add helper functions for common test setup
     }
 }
+

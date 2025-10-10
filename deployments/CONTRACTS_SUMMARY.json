@@ -1,0 +1,52 @@
+{
+  "deployment_info": {
+    "date": "2024-12-19",
+    "architecture": "Cross-chain NFT marketplace with factory pattern",
+    "networks": {
+      "story_protocol": "NFT Factory and Collections",
+      "base": "Payment and Auction System"
+    }
+  },
+  "contracts": {
+    "KukuxumusuNFTFactory": {
+      "address": "0x75bf7b1DD6b3a666F18c7784B78871C429E92C71",
+      "network": "Story Protocol",
+      "owner": "0x090378a9c80c5E1Ced85e56B2128c1e514E75357",
+      "deployer": "0x0e60B83F83c5d2684acE779dea8A957e91D02475",
+      "abi_file": "KukuxumusuNFTFactory_ABI.json",
+      "description": "Factory contract for creating multiple NFT collections",
+      "gas_used": "3162558"
+    },
+    "KukuxumusuPayment": {
+      "address": "0x75bf7b1DD6b3a666F18c7784B78871C429E92C71",
+      "network": "Base",
+      "owner": "0x090378a9c80c5E1Ced85e56B2128c1e514E75357",
+      "treasury": "0x090378a9c80c5E1Ced85e56B2128c1e514E75357",
+      "deployer": "0x0e60B83F83c5d2684acE779dea8A957e91D02475",
+      "abi_file": "KukuxumusuPayment_ABI.json",
+      "description": "Payment contract for multi-token payments and auctions",
+      "gas_used": "1757623"
+    },
+    "KukuxumusuNFT": {
+      "address": "Template contract (deployed per collection)",
+      "network": "Story Protocol",
+      "abi_file": "KukuxumusuNFT_ABI.json",
+      "description": "Individual NFT collection contract (created by factory)",
+      "note": "Each collection gets its own instance"
+    }
+  },
+  "abi_files": [
+    "KukuxumusuNFTFactory_ABI.json",
+    "KukuxumusuPayment_ABI.json", 
+    "KukuxumusuNFT_ABI.json"
+  ],
+  "deployment_scripts": [
+    "script/DeployKukuxumusuNFTFactory.s.sol",
+    "script/DeployKukuxumusuPayment.s.sol",
+    "script/CreateKukuxumusuCollection.s.sol"
+  ],
+  "documentation": [
+    "MULTIPLE_COLLECTIONS_DEPLOYMENT.md"
+  ]
+}
+

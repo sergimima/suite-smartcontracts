@@ -1,0 +1,7 @@
+KukuxumusuPayment deployed at: 0xB411B0D3Ac3BbE517BC155de984E3e7011adfD44
+Network: Base Sepolia (Chain ID: 84532)
+Treasury: 0x090378a9c80c5E1Ced85e56B2128c1e514E75357
+Owner: 0x090378a9c80c5E1Ced85e56B2128c1e514E75357
+Trusted Signer: 0x0e60B83F83c5d2684acE779dea8A957e91D02475
+Verified: https://sepolia.basescan.org/address/0xb411b0d3ac3bbe517bc155de984e3e7011adfd44
+

@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(forge test:*)",
+      "Bash(forge build:*)",
+      "WebSearch",
+      "Bash(cat:*)",
+      "Bash(forge:*)",
+      "Bash(cast code:*)",
+      "Bash(node -e \"const fs = require(''fs''); const data = JSON.parse(fs.readFileSync(''KukuxumusuPayment.json'', ''utf8'')); fs.writeFileSync(''../../deployments/KukuxumusuPayment_ABI.json'', JSON.stringify(data.abi, null, 2));\")",
+      "Bash(echo $BASE_RPC_URL)",
+      "Bash(cast chain-id:*)",
+      "Bash(cast chain:*)",
+      "Bash(echo $ETHERSCAN_API_KEY)",
+      "Bash(node:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

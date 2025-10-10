@@ -1,0 +1,5 @@
+KukuxumusuNFT deployed at: 0xd9b3913250035D6a2621Cefc9574f7F8c6e5F2B7
+Name: Kukuxumusu NFT
+Symbol: KUKU
+Owner: 0x090378a9c80c5E1Ced85e56B2128c1e514E75357
+Max Supply: 10000

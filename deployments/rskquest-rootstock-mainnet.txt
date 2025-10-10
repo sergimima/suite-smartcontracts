@@ -1,0 +1,7 @@
+RSKQuest deployed at: 0x73A488485Fe3C2643664b2957AF480cDb5Ce46d9
+Owner: 0x090378a9c80c5E1Ced85e56B2128c1e514E75357
+Network: Rootstock Mainnet (Chain ID: 30)
+Deployer: 0x7CBcc8991c2524EcdD640b5D4846f315bf2eFF7A
+Gas Used: 2,187,801
+Cost: 0.000057 RBTC (~$3.42 USD)
+Verified: https://rootstock.blockscout.com/address/0x73a488485fe3c2643664b2957af480cdb5ce46d9
